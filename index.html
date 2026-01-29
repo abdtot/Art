@@ -1,1 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a9396">
+    <title>بيكسل آرت - التصميم الجرافيكي</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+</head>
+<body>
+    <!-- شريط التنقل العلوي -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-icon">🎨</div>
+            <div class="logo-text">
+                <h1>بيكسل آرت</h1>
+                <p>Pixel Art للتصميم الجرافيكي</p>
+            </div>
+        </div>
+        
+        <div class="user-actions">
+            <button class="notification-btn" id="notificationBtn">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </button>
+            <button class="profile-btn" id="profileBtn">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
 
+    <!-- شريط الإعلانات المتحرك -->
+    <section class="ads-slider" id="adsSlider">
+        <div class="slider-container" id="sliderContainer">
+            <!-- سيتم إضافة الصور ديناميكياً -->
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn prev" id="prevBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="slider-dots" id="sliderDots">
+                <!-- سيتم إضافة النقاط ديناميكياً -->
+            </div>
+            <button class="slider-btn next" id="nextBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content" id="mainContent">
+        <div class="welcome-section">
+            <h2>مرحباً بك في بيكسل آرت</h2>
+            <p>نحن متخصصون في تقديم حلول التصميم الجرافيكي الإحترافية لتلبية احتياجاتك الإبداعية</p>
+        </div>
+        
+        <div class="quick-actions">
+            <div class="action-card" data-action="design">
+                <div class="action-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>طلب تصميم</h3>
+                <p>اطلب تصميم جرافيكي مخصص يناسب علامتك التجارية</p>
+            </div>
+            
+            <div class="action-card" data-action="hiring">
+                <div class="action-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>طلب توظيف</h3>
+                <p>انضم إلى فريقنا من المصممين المحترفين</p>
+            </div>
+            
+            <div class="action-card" data-action="portfolio">
+                <div class="action-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <h3>معرض الأعمال</h3>
+                <p>تصفح أحدث أعمال فريق التصميم لدينا</p>
+            </div>
+            
+            <div class="action-card" data-action="courses">
+                <div class="action-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>دورات تدريبية</h3>
+                <p>تعلم التصميم الجرافيكي مع دوراتنا المتخصصة</p>
+            </div>
+        </div>
+        
+        <section class="featured-designs">
+            <h2 class="section-title">تصاميم مميزة</h2>
+            <div class="designs-grid" id="designsGrid">
+                <!-- سيتم إضافة التصاميم ديناميكياً -->
+            </div>
+        </section>
+    </main>
+
+    <!-- شريط التنقل السفلي -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="home">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </button>
+        <button class="nav-item" data-page="design">
+            <i class="fas fa-palette"></i>
+            <span>طلب تصميم</span>
+        </button>
+        <button class="nav-item" data-page="hiring">
+            <i class="fas fa-user-tie"></i>
+            <span>طلب توظيف</span>
+        </button>
+        <button class="nav-item" data-page="settings">
+            <i class="fas fa-cog"></i>
+            <span>الإعدادات</span>
+        </button>
+    </nav>
+
+    <!-- الصفحات الأخرى -->
+    <div class="page-overlay" id="pageOverlay"></div>
+    
+    <!-- صفحة طلب التصميم -->
+    <div class="page-container" id="designPage">
+        <div class="page-header">
+            <button class="back-btn" data-page="home">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <h2>طلب تصميم جديد</h2>
+        </div>
+        
+        <form class="design-form" id="designForm">
+            <div class="form-group">
+                <label for="designType">نوع التصميم</label>
+                <select id="designType" required>
+                    <option value="">اختر نوع التصميم</option>
+                    <option value="logo">شعار (لوجو)</option>
+                    <option value="branding">هوية بصرية</option>
+                    <option value="social">تصاميم وسائل التواصل</option>
+                    <option value="print">مواد مطبوعة</option>
+                    <option value="web">تصاميم ويب</option>
+                    <option value="other">تصميم آخر</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="designDescription">وصف التصميم المطلوب</label>
+                <textarea id="designDescription" rows="5" placeholder="صف التصميم الذي تريده بالتفصيل..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="designDeadline">الموعد النهائي</label>
+                <input type="date" id="designDeadline" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="designBudget">الميزانية المتوقعة (ريال سعودي)</label>
+                <input type="range" id="designBudget" min="100" max="5000" step="50" value="1000">
+                <div class="budget-value">
+                    <span id="budgetValue">1000</span> ريال
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>الألوان المفضلة</label>
+                <div class="color-picker">
+                    <div class="color-option" data-color="#0a9396" style="background-color: #0a9396;"></div>
+                    <div class="color-option" data-color="#005f73" style="background-color: #005f73;"></div>
+                    <div class="color-option" data-color="#94d2bd" style="background-color: #94d2bd;"></div>
+                    <div class="color-option" data-color="#ee9b00" style="background-color: #ee9b00;"></div>
+                    <div class="color-option" data-color="#9b2226" style="background-color: #9b2226;"></div>
+                    <input type="text" id="customColor" placeholder="#RRGGBB">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="referenceFiles">ملفات مرجعية (اختياري)</label>
+                <div class="file-upload">
+                    <label for="fileInput" class="file-upload-label">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span>انقر لرفع الملفات</span>
+                    </label>
+                    <input type="file" id="fileInput" multiple style="display: none;">
+                    <div class="file-list" id="fileList"></div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">إرسال طلب التصميم</button>
+        </form>
+    </div>
+    
+    <!-- صفحة طلب التوظيف -->
+    <div class="page-container" id="hiringPage">
+        <div class="page-header">
+            <button class="back-btn" data-page="home">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <h2>طلب توظيف</h2>
+        </div>
+        
+        <form class="hiring-form" id="hiringForm">
+            <div class="form-group">
+                <label for="applicantName">الاسم الكامل</label>
+                <input type="text" id="applicantName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="applicantEmail">البريد الإلكتروني</label>
+                <input type="email" id="applicantEmail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="applicantPhone">رقم الهاتف</label>
+                <input type="tel" id="applicantPhone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="applicantPosition">المجال الوظيفي المطلوب</label>
+                <select id="applicantPosition" required>
+                    <option value="">اختر المجال</option>
+                    <option value="graphic">مصمم جرافيك</option>
+                    <option value="motion">مصمم موشن جرافيك</option>
+                    <option value="uiux">مصمم واجهات تجربة مستخدم</option>
+                    <option value="illustration">رسام توضيحي</option>
+                    <option value="other">مجال آخر</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="applicantExperience">سنوات الخبرة</label>
+                <input type="number" id="applicantExperience" min="0" max="30" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="applicantPortfolio">رابط معرض الأعمال (اختياري)</label>
+                <input type="url" id="applicantPortfolio">
+            </div>
+            
+            <div class="form-group">
+                <label for="applicantMessage">رسالة التقديم</label>
+                <textarea id="applicantMessage" rows="4" placeholder="أخبرنا عن نفسك وخبراتك..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="applicantResume">السيرة الذاتية</label>
+                <div class="file-upload">
+                    <label for="resumeInput" class="file-upload-label">
+                        <i class="fas fa-file-upload"></i>
+                        <span>رفع السيرة الذاتية (PDF)</span>
+                    </label>
+                    <input type="file" id="resumeInput" accept=".pdf" style="display: none;">
+                    <div class="file-list" id="resumeFile"></div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">تقديم طلب التوظيف</button>
+        </form>
+    </div>
+    
+    <!-- صفحة الإعدادات -->
+    <div class="page-container" id="settingsPage">
+        <div class="page-header">
+            <button class="back-btn" data-page="home">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <h2>الإعدادات</h2>
+        </div>
+        
+        <div class="settings-list">
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="fas fa-bell"></i>
+                    <div>
+                        <h3>الإشعارات</h3>
+                        <p>التحكم في إشعارات التطبيق</p>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="notificationsToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="fas fa-moon"></i>
+                    <div>
+                        <h3>الوضع الليلي</h3>
+                        <p>تفعيل الوضع الداكن</p>
+                    </div>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="fas fa-language"></i>
+                    <div>
+                        <h3>لغة التطبيق</h3>
+                        <p>اختر لغة العرض</p>
+                    </div>
+                </div>
+                <select id="languageSelect">
+                    <option value="ar" selected>العربية</option>
+                    <option value="en">الإنجليزية</option>
+                </select>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="fas fa-paint-brush"></i>
+                    <div>
+                        <h3>لون التطبيق</h3>
+                        <p>اختر اللون المفضل</p>
+                    </div>
+                </div>
+                <div class="color-options">
+                    <div class="color-option selected" data-color="#0a9396" style="background-color: #0a9396;"></div>
+                    <div class="color-option" data-color="#005f73" style="background-color: #005f73;"></div>
+                    <div class="color-option" data-color="#ee9b00" style="background-color: #ee9b00;"></div>
+                    <div class="color-option" data-color="#9b2226" style="background-color: #9b2226;"></div>
+                </div>
+            </div>
+            
+            <div class="setting-item clickable" id="storageSettings">
+                <div class="setting-info">
+                    <i class="fas fa-database"></i>
+                    <div>
+                        <h3>إدارة التخزين</h3>
+                        <p>عرض وحذف البيانات المخزنة</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            
+            <div class="setting-item clickable" id="aboutApp">
+                <div class="setting-info">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <h3>حول التطبيق</h3>
+                        <p>إصدار التطبيق ومعلومات أخرى</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            
+            <div class="setting-item clickable" id="clearData">
+                <div class="setting-info">
+                    <i class="fas fa-trash"></i>
+                    <div>
+                        <h3>مسح جميع البيانات</h3>
+                        <p>حذف جميع البيانات المحفوظة</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>تسجيل الخروج</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- حوارات التنبيه -->
+    <div class="dialog-overlay" id="dialogOverlay"></div>
+    
+    <div class="dialog" id="successDialog">
+        <div class="dialog-icon success">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3 class="dialog-title">تم الإرسال بنجاح</h3>
+        <p class="dialog-message" id="dialogMessage">سيتم مراجعة طلبك والرد عليك خلال 24 ساعة</p>
+        <button class="dialog-btn" id="dialogCloseBtn">موافق</button>
+    </div>
+    
+    <div class="dialog" id="storageDialog">
+        <h3 class="dialog-title">إدارة التخزين</h3>
+        <div class="storage-info">
+            <div class="storage-item">
+                <span>طلبات التصميم:</span>
+                <span id="designRequestsCount">0</span>
+            </div>
+            <div class="storage-item">
+                <span>طلبات التوظيف:</span>
+                <span id="hiringRequestsCount">0</span>
+            </div>
+            <div class="storage-item">
+                <span>إجمالي المساحة المستخدمة:</span>
+                <span id="totalStorage">0 KB</span>
+            </div>
+        </div>
+        <div class="dialog-buttons">
+            <button class="dialog-btn secondary" id="clearDesignsBtn">حذف طلبات التصميم</button>
+            <button class="dialog-btn secondary" id="clearHiringBtn">حذف طلبات التوظيف</button>
+            <button class="dialog-btn" id="closeStorageBtn">إغلاق</button>
+        </div>
+    </div>
+
+    <script src="db.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- تسجيل Service Worker لجعل التطبيق PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered: ', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
